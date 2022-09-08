@@ -1,7 +1,5 @@
 import 'react-native-gesture-handler';
-
-import React, {useEffect, useState} from 'react';
-import {View, Text} from 'react-native';
+import React, {useEffect} from 'react';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -12,101 +10,21 @@ import {Provider} from 'react-redux';
 import {store} from './store';
 import {setUser} from './store';
 import {useDispatch, useSelector} from 'react-redux';
-import {useNavigation} from '@react-navigation/native';
-import {DevSettings} from 'react-native';
 
 import SignIn from './pages/login/SignIn';
 import SignUp from './pages/login/SignUp';
+import Details from './pages/main/details/Details';
+import Home from './pages/main/home/Home';
+import Search from './pages/main/search/Search';
+import NoMovie from './pages/main/search/NoMovie';
+import Settings from './pages/main/settings/Settings';
+import EditProfile from './pages/main/settings/EditProfile';
+import ChangeTheme from './pages/main/settings/ChangeTheme';
 
-import IconFeather from 'react-native-vector-icons/Feather';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const BottomTab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
-
-const Home = () => {
-  const [_setUser] = useState('');
-  const navigation = useNavigation();
-  const user = useSelector(state => state.user);
-
-  const goBottomTab = () => {
-    navigation.navigate('BottomTabScreens');
-  };
-
-  const removeUser = async () => {
-    const userData = await AsyncStorage.getItem('user');
-    const _user = userData ? JSON.parse(userData) : null;
-    _setUser(_user);
-    console.log(_user);
-    await AsyncStorage.removeItem('user');
-    DevSettings.reload();
-  };
-
-  const userReduxIn = () => {
-    return <Text>{user}</Text>;
-  };
-
-  return (
-    <View>
-      <Text onPress={goBottomTab}>Home page</Text>
-      <View style={{backgroundColor: 'green'}}>
-        <Text>AsyncStorage Section</Text>
-        <Text onPress={removeUser}>Remove User</Text>
-      </View>
-      <View style={{backgroundColor: 'aqua'}}>
-        <Text>REDUX TEST SECTİON</Text>
-        <Text>{userReduxIn()}</Text>
-      </View>
-      <IconFeather name="home" size={25} />
-    </View>
-  );
-};
-
-const BottomTabNav = () => {
-  return (
-    <BottomTab.Navigator>
-      <BottomTab.Screen name="EmptyScreen1" component={Empty} />
-      <BottomTab.Screen name="EmptyScreen2" component={Empty} />
-      <BottomTab.Screen name="EmptyScreen3" component={Empty} />
-    </BottomTab.Navigator>
-  );
-};
-
-const Empty = () => {
-  return (
-    <View>
-      <Text>Empty page</Text>
-      <IconFeather name="plus" size={25} />
-    </View>
-  );
-};
-
-const LoginStack = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="SignInScreen"
-        component={SignIn}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="SignUpScreen"
-        component={SignUp}
-        options={{headerTitle: 'Sign Up'}}
-      />
-    </Stack.Navigator>
-  );
-};
-
-const MainStack = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="HomeScreen" component={Home} />
-      <Stack.Screen name="BottomTabScreens" component={BottomTabNav} />
-    </Stack.Navigator>
-  );
-};
-
 const MainStackNav = createStackNavigator();
 
 const MainStackNavigator = () => {
@@ -128,7 +46,7 @@ const MainStackNavigator = () => {
     <MainStackNav.Navigator>
       {user ? (
         <>
-          <MainStackNav.Screen name="MainStackScreens" component={MainStack} />
+          <MainStackNav.Screen name="MainScreens" component={MainStack} />
         </>
       ) : (
         <>
@@ -140,6 +58,61 @@ const MainStackNavigator = () => {
         </>
       )}
     </MainStackNav.Navigator>
+  );
+};
+
+const MainStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="MainBottomTabScreens" component={MainBottomTab} />
+      <Stack.Screen name="DetailScreen" component={Details} />
+    </Stack.Navigator>
+  );
+};
+
+const LoginStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="SignInScreen"
+        component={SignIn}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="SignUpScreen"
+        component={SignUp}
+        options={{headerTitle: 'Sign Up'}}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const MainBottomTab = () => {
+  return (
+    <BottomTab.Navigator>
+      <BottomTab.Screen name="HomeScreen" component={Home} />
+      <BottomTab.Screen name="SearchScreens" component={SearchStack} />
+      <BottomTab.Screen name="SettingsScreens" component={SettingsStack} />
+    </BottomTab.Navigator>
+  );
+};
+
+const SearchStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="SearchScreen" component={Search} />
+      <Stack.Screen name="NoMovieScreen" component={NoMovie} />
+    </Stack.Navigator>
+  );
+};
+
+const SettingsStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="SettingsScreen" component={Settings} />
+      <Stack.Screen name="EditProfileScreen" component={EditProfile} />
+      <Stack.Screen name="ChangeThemeScreen" component={ChangeTheme} />
+    </Stack.Navigator>
   );
 };
 
