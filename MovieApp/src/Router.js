@@ -43,18 +43,14 @@ const MainStackNavigator = () => {
   }, []);
 
   return (
-    <MainStackNav.Navigator>
+    <MainStackNav.Navigator screenOptions={{headerShown: false}}>
       {user ? (
         <>
           <MainStackNav.Screen name="MainScreens" component={MainStack} />
         </>
       ) : (
         <>
-          <MainStackNav.Screen
-            name="LoginScreens"
-            component={LoginStack}
-            options={{headerShown: false}}
-          />
+          <MainStackNav.Screen name="LoginScreens" component={LoginStack} />
         </>
       )}
     </MainStackNav.Navigator>
@@ -64,7 +60,11 @@ const MainStackNavigator = () => {
 const MainStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="MainBottomTabScreens" component={MainBottomTab} />
+      <Stack.Screen
+        name="MainBottomTabScreens"
+        component={MainBottomTab}
+        options={{headerShown: false}}
+      />
       <Stack.Screen name="DetailScreen" component={Details} />
     </Stack.Navigator>
   );
@@ -90,7 +90,11 @@ const LoginStack = () => {
 const MainBottomTab = () => {
   return (
     <BottomTab.Navigator>
-      <BottomTab.Screen name="HomeScreen" component={Home} />
+      <BottomTab.Screen
+        name="HomeScreen"
+        component={Home}
+        options={{headerTitle: 'Home', headerTitleAlign: 'center'}}
+      />
       <BottomTab.Screen name="SearchScreens" component={SearchStack} />
       <BottomTab.Screen name="SettingsScreens" component={SettingsStack} />
     </BottomTab.Navigator>
