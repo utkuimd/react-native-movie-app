@@ -10,19 +10,11 @@ const Search = () => {
   const renderMovieList = ({item}) => <Movielist movie={item} />;
   // eslint-disable-next-line prettier/prettier
   const [filteredMovieList, setFilteredMovieList] = useState(movieList.movieList.results);
-  const [bool, setBool] = useState(true);
+  const [anyMovie, setAnyMovie] = useState(true);
 
   useEffect(() => {
     setFilteredMovieList(movieList.movieList.results);
   }, [movieList.movieList.results]);
-
-  useEffect(() => {
-    if (filteredMovieList === null) {
-      setBool(false);
-    } else {
-      setBool(true);
-    }
-  }, [filteredMovieList]);
 
   const HandleSearch = text => {
     const filteredList = movieList.movieList.results.filter(movie => {
@@ -31,7 +23,7 @@ const Search = () => {
       return currentTitle.indexOf(searchedText) > -1;
     });
     setFilteredMovieList(filteredList);
-    console.log(bool);
+    filteredList.length !== 0 ? setAnyMovie(true) : setAnyMovie(false);
   };
 
   const nullList = () => {
@@ -47,7 +39,7 @@ const Search = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Searchbar handleSearch={HandleSearch} />
-      {bool ? (
+      {anyMovie ? (
         <FlatList
           data={filteredMovieList}
           renderItem={renderMovieList}

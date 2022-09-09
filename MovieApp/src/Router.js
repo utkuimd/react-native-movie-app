@@ -8,7 +8,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {Provider} from 'react-redux';
 import {store} from './store';
-import {setUser} from './store';
+import {setUser, setMovieList} from './store';
 import {useDispatch, useSelector} from 'react-redux';
 
 import SignIn from './pages/login/SignIn';
@@ -22,6 +22,7 @@ import EditProfile from './pages/main/settings/EditProfile';
 import ChangeTheme from './pages/main/settings/ChangeTheme';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 
 const BottomTab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -37,8 +38,22 @@ const MainStackNavigator = () => {
     dispatch(setUser(isUser));
   };
 
+  const getMovies = () => {
+    // eslint-disable-next-line prettier/prettier
+    const apiRequestLink = 'https://api.themoviedb.org/3/movie/top_rated?api_key=9c4dbbe40978e1aef787c52576339a4a';
+    axios
+      .get(apiRequestLink, {})
+      .then(response => {
+        dispatch(setMovieList(response.data));
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
     getUser();
+    getMovies();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
