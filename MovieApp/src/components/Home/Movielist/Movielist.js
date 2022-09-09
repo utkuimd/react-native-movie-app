@@ -1,10 +1,10 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, Pressable} from 'react-native';
 import styles from './Movielist.style';
 
-const Movielist = ({movie}) => {
+const Movielist = ({movie, gotoDetails}) => {
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container} onPress={() => gotoDetails(movie.id)}>
       <Image
         style={styles.moviePoster}
         source={{uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}`}}
@@ -16,7 +16,7 @@ const Movielist = ({movie}) => {
         </View>
         <Text style={styles.average}>{movie.vote_average} / 10</Text>
       </View>
-    </View>
+    </Pressable>
   );
 };
 

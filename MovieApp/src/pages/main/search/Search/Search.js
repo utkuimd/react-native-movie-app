@@ -1,16 +1,23 @@
 import React, {useEffect, useState} from 'react';
 import {SafeAreaView, FlatList, View, Text} from 'react-native';
 import {useSelector} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
 import Movielist from '../../../../components/Home/Movielist';
 import Searchbar from '../../../../components/Search/Searchbar';
 import styles from './Search.style';
 
 const Search = () => {
   const movieList = useSelector(state => state.movieList);
-  const renderMovieList = ({item}) => <Movielist movie={item} />;
+  // eslint-disable-next-line prettier/prettier
+  const renderMovieList = ({item}) => <Movielist movie={item} gotoDetails={goToDetails} />;
   // eslint-disable-next-line prettier/prettier
   const [filteredMovieList, setFilteredMovieList] = useState(movieList.movieList.results);
   const [anyMovie, setAnyMovie] = useState(true);
+  const navigation = useNavigation();
+
+  const goToDetails = id => {
+    navigation.navigate('DetailScreen', {id: id});
+  };
 
   useEffect(() => {
     setFilteredMovieList(movieList.movieList.results);
