@@ -159,7 +159,11 @@ const MainBottomTab = () => {
 const SettingsStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="SettingsScreen" component={Settings} />
+      <Stack.Screen
+        name="SettingsScreen"
+        component={Settings}
+        options={{headerTitle: 'Settings', headerTitleAlign: 'center'}}
+      />
       <Stack.Screen name="EditProfileScreen" component={EditProfile} />
       <Stack.Screen name="ChangeThemeScreen" component={ChangeTheme} />
     </Stack.Navigator>
