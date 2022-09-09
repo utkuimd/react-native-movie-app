@@ -34,8 +34,9 @@ const MainStackNavigator = () => {
 
   const getUser = async () => {
     const userData = await AsyncStorage.getItem('user');
-    const isUser = userData ? userData : null;
+    const isUser = userData ? userData : [];
     dispatch(setUser(isUser));
+    console.log(user);
   };
 
   const getMovies = () => {
@@ -59,7 +60,7 @@ const MainStackNavigator = () => {
 
   return (
     <MainStackNav.Navigator screenOptions={{headerShown: false}}>
-      {user ? (
+      {user.user.length !== 0 ? (
         <>
           <MainStackNav.Screen name="MainScreens" component={MainStack} />
         </>
@@ -164,7 +165,11 @@ const SettingsStack = () => {
         component={Settings}
         options={{headerTitle: 'Settings', headerTitleAlign: 'center'}}
       />
-      <Stack.Screen name="EditProfileScreen" component={EditProfile} />
+      <Stack.Screen
+        name="EditProfileScreen"
+        component={EditProfile}
+        options={{headerTitle: 'Edit Profile', headerTitleAlign: 'center'}}
+      />
       <Stack.Screen name="ChangeThemeScreen" component={ChangeTheme} />
     </Stack.Navigator>
   );
