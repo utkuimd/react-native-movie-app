@@ -11,8 +11,11 @@ const Home = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Filter />
-      <FlatList data={movieList.movieList.results} renderItem={renderMovies} />
+      <FlatList
+        data={movieList.movieList.results}
+        renderItem={renderMovies}
+        ListHeaderComponent={<Filter />}
+      />
     </SafeAreaView>
   );
 };

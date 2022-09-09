@@ -16,13 +16,13 @@ import SignUp from './pages/login/SignUp';
 import Details from './pages/main/details/Details';
 import Home from './pages/main/home/Home';
 import Search from './pages/main/search/Search';
-import NoMovie from './pages/main/search/NoMovie';
 import Settings from './pages/main/settings/Settings';
 import EditProfile from './pages/main/settings/EditProfile';
 import ChangeTheme from './pages/main/settings/ChangeTheme';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import IconFeather from 'react-native-vector-icons/Feather';
 
 const BottomTab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -108,20 +108,51 @@ const MainBottomTab = () => {
       <BottomTab.Screen
         name="HomeScreen"
         component={Home}
-        options={{headerTitle: 'Home', headerTitleAlign: 'center'}}
+        options={{
+          headerTitle: 'Home',
+          headerTitleAlign: 'center',
+          tabBarLabel: 'Home',
+          tabBarIcon: ({focused}) => (
+            <IconFeather
+              name="home"
+              size={25}
+              color={focused ? '#1e90ff' : 'gray'}
+            />
+          ),
+        }}
       />
-      <BottomTab.Screen name="SearchScreens" component={SearchStack} />
-      <BottomTab.Screen name="SettingsScreens" component={SettingsStack} />
+      <BottomTab.Screen
+        name="SearchScreen"
+        component={Search}
+        options={{
+          headerTitle: 'Search',
+          headerTitleAlign: 'center',
+          tabBarLabel: 'Search',
+          tabBarIcon: ({focused}) => (
+            <IconFeather
+              name="search"
+              size={25}
+              color={focused ? '#1e90ff' : 'gray'}
+            />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="SettingsScreens"
+        component={SettingsStack}
+        options={{
+          headerShown: false,
+          tabBarLabel: 'Settings',
+          tabBarIcon: ({focused}) => (
+            <IconFeather
+              name="settings"
+              size={25}
+              color={focused ? '#1e90ff' : 'gray'}
+            />
+          ),
+        }}
+      />
     </BottomTab.Navigator>
-  );
-};
-
-const SearchStack = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="SearchScreen" component={Search} />
-      <Stack.Screen name="NoMovieScreen" component={NoMovie} />
-    </Stack.Navigator>
   );
 };
 

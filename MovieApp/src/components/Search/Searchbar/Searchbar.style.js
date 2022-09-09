@@ -10,6 +10,8 @@ export default StyleSheet.create({
     justifyContent: 'space-evenly',
     borderRadius: 20,
     flexDirection: 'row',
+    marginTop: 10,
+    marginBottom: 10,
   },
   inputContainer: {
     width: '80%',
