@@ -1,4 +1,6 @@
 import {configureStore, createSlice, combineReducers} from '@reduxjs/toolkit';
+import darkTheme from '../constants/dark';
+import lightTheme from '../constants/light';
 
 const userSlice = createSlice({
   name: 'user',
@@ -28,15 +30,20 @@ const movieListSlice = createSlice({
   },
 });
 
-const searchMovieSlice = createSlice({
-  name: 'searchMovie',
+const themeSlice = createSlice({
+  name: 'theme',
   initialState: {
-    searchMovie: [],
+    theme: lightTheme,
   },
   reducers: {
-    setSearchMovie: (state, action) => {
+    handleLightTheme: state => {
       return {
-        searchMovie: action.payload,
+        theme: state.theme === darkTheme ? lightTheme : darkTheme,
+      };
+    },
+    handleDarkTheme: state => {
+      return {
+        theme: state.theme === lightTheme ? darkTheme : lightTheme,
       };
     },
   },
@@ -44,12 +51,13 @@ const searchMovieSlice = createSlice({
 
 export const {setUser} = userSlice.actions;
 export const {setMovieList} = movieListSlice.actions;
-export const {setSearchMovie} = searchMovieSlice.actions;
+export const {handleLightTheme} = themeSlice.actions;
+export const {handleDarkTheme} = themeSlice.actions;
 
 export const store = configureStore({
   reducer: combineReducers({
     user: userSlice.reducer,
     movieList: movieListSlice.reducer,
-    searchMovie: searchMovieSlice.reducer,
+    theme: themeSlice.reducer,
   }),
 });

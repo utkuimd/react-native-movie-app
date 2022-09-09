@@ -15,6 +15,10 @@ const Settings = () => {
     navigation.navigate('EditProfileScreen');
   };
 
+  const gotoChangeTheme = () => {
+    navigation.navigate('ChangeThemeScreen');
+  };
+
   const logout = async () => {
     await AsyncStorage.removeItem('user');
     DevSettings.reload();
@@ -36,7 +40,7 @@ const Settings = () => {
         <Pressable style={styles.settingsButton} onPress={gotoEditProfile}>
           <Text style={styles.settingsButton_text}>Edit Profile</Text>
         </Pressable>
-        <Pressable style={styles.settingsButton} onPress={null}>
+        <Pressable style={styles.settingsButton} onPress={gotoChangeTheme}>
           <Text style={styles.settingsButton_text}>Change Theme</Text>
         </Pressable>
       </View>
