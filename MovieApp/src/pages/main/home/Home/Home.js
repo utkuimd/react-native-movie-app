@@ -11,13 +11,14 @@ const Home = () => {
   // eslint-disable-next-line prettier/prettier
   const renderMovies = ({item}) => <Movielist movie={item} gotoDetails={goToDetails} />;
   const navigation = useNavigation();
+  const {theme} = useSelector(state => state.theme);
 
   const goToDetails = id => {
     navigation.navigate('DetailScreen', {id: id});
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, {backgroundColor: theme.backgroundColor}]}>
       <FlatList
         data={movieList.movieList.results}
         renderItem={renderMovies}

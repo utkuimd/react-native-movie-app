@@ -10,6 +10,7 @@ const Settings = () => {
   const userInRedux = useSelector(state => state.user);
   const user = JSON.parse(userInRedux.user)[0];
   const navigation = useNavigation();
+  const {theme} = useSelector(state => state.theme);
 
   const gotoEditProfile = () => {
     navigation.navigate('EditProfileScreen');
@@ -25,7 +26,7 @@ const Settings = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, {backgroundColor: theme.backgroundColor}]}>
       <View style={styles.userDetail}>
         <Image
           style={styles.profilePicture}
@@ -33,8 +34,8 @@ const Settings = () => {
             uri: 'https://cdn.dribbble.com/users/146798/screenshots/1382276/__gif___darth_vader_arrested.gif',
           }}
         />
-        <Text style={styles.username}>{user.username}</Text>
-        <Text style={styles.email}>{user.email}</Text>
+        <Text style={[styles.username, {color: theme.color}]}>{user.username}</Text>
+        <Text style={[styles.email, {color: theme.color}]}>{user.email}</Text>
       </View>
       <View style={styles.settingsButtons_div}>
         <Pressable style={styles.settingsButton} onPress={gotoEditProfile}>

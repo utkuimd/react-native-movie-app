@@ -3,5 +3,4 @@ export default {
   backgroundColor: '#14202b',
   color: 'white',
   headerColor: '#131c2a',
-  textboxColor: 'black',
 };

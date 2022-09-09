@@ -74,6 +74,7 @@ const MainStackNavigator = () => {
 };
 
 const MainStack = () => {
+  const {theme} = useSelector(state => state.theme);
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -84,7 +85,13 @@ const MainStack = () => {
       <Stack.Screen
         name="DetailScreen"
         component={Details}
-        options={{headerTitle: 'Movie Details', headerTitleAlign: 'center'}}
+        options={{
+          headerTitle: 'Movie Details',
+          headerStyle: {backgroundColor: theme.headerColor},
+          headerTitleStyle: {color: theme.color},
+          headerTitleAlign: 'center',
+          headerTintColor: theme.color,
+        }}
       />
     </Stack.Navigator>
   );
@@ -108,13 +115,17 @@ const LoginStack = () => {
 };
 
 const MainBottomTab = () => {
+  const {theme} = useSelector(state => state.theme);
   return (
-    <BottomTab.Navigator>
+    <BottomTab.Navigator
+      screenOptions={{tabBarStyle: {backgroundColor: theme.headerColor}}}>
       <BottomTab.Screen
         name="HomeScreen"
         component={Home}
         options={{
           headerTitle: 'Home',
+          headerStyle: {backgroundColor: theme.headerColor},
+          headerTitleStyle: {color: theme.color},
           headerTitleAlign: 'center',
           tabBarLabel: 'Home',
           tabBarIcon: ({focused}) => (
@@ -131,6 +142,8 @@ const MainBottomTab = () => {
         component={Search}
         options={{
           headerTitle: 'Search',
+          headerStyle: {backgroundColor: theme.headerColor},
+          headerTitleStyle: {color: theme.color},
           headerTitleAlign: 'center',
           tabBarLabel: 'Search',
           tabBarIcon: ({focused}) => (
@@ -162,22 +175,40 @@ const MainBottomTab = () => {
 };
 
 const SettingsStack = () => {
+  const {theme} = useSelector(state => state.theme);
   return (
     <Stack.Navigator>
       <Stack.Screen
         name="SettingsScreen"
         component={Settings}
-        options={{headerTitle: 'Settings', headerTitleAlign: 'center'}}
+        options={{
+          headerTitle: 'Settings',
+          headerStyle: {backgroundColor: theme.headerColor},
+          headerTitleStyle: {color: theme.color},
+          headerTitleAlign: 'center',
+        }}
       />
       <Stack.Screen
         name="EditProfileScreen"
         component={EditProfile}
-        options={{headerTitle: 'Edit Profile', headerTitleAlign: 'center'}}
+        options={{
+          headerTitle: 'Edit Profile',
+          headerStyle: {backgroundColor: theme.headerColor},
+          headerTitleStyle: {color: theme.color},
+          headerTitleAlign: 'center',
+          headerTintColor: theme.color,
+        }}
       />
       <Stack.Screen
         name="ChangeThemeScreen"
         component={ChangeTheme}
-        options={{headerTitle: 'Change Theme', headerTitleAlign: 'center'}}
+        options={{
+          headerTitle: 'Change Theme',
+          headerStyle: {backgroundColor: theme.headerColor},
+          headerTitleStyle: {color: theme.color},
+          headerTitleAlign: 'center',
+          headerTintColor: theme.color,
+        }}
       />
     </Stack.Navigator>
   );

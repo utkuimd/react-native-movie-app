@@ -8,7 +8,7 @@ import {
   Alert,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {setUser} from '../../../../store';
 import {useNavigation} from '@react-navigation/native';
 import styles from './EditProfile.style';
@@ -21,6 +21,7 @@ const EditProfile = () => {
 
   const dispatch = useDispatch();
   const navigation = useNavigation();
+  const {theme} = useSelector(state => state.theme);
 
   const saveChanges = async () => {
     if (password === passwordAgain) {
@@ -44,7 +45,7 @@ const EditProfile = () => {
     }
   };
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, {backgroundColor: theme.backgroundColor}]}>
       <Text style={styles.title}>Edit Your Profile!</Text>
       <View style={styles.getInformation}>
         <View style={styles.getInformationArea}>

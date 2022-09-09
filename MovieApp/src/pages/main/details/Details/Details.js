@@ -9,9 +9,10 @@ const Details = () => {
   const route = useRoute();
   const chosenMovieID = route.params.id;
   const movieList = useSelector(state => state.movieList);
-  const chosenMovie = movieList.movieList.results.filter(
-    movie => movie.id === chosenMovieID,
-  );
+  // eslint-disable-next-line prettier/prettier
+  const chosenMovie = movieList.movieList.results.filter(movie => movie.id === chosenMovieID);
+  const {theme} = useSelector(state => state.theme);
+
   const isMovieAdult = () => {
     if (chosenMovie[0].adult === true) {
       return 'Adult: Yes';
@@ -21,7 +22,7 @@ const Details = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, {backgroundColor: theme.backgroundColor}]}>
       <ScrollView>
         <View style={styles.body}>
           <Image
@@ -30,7 +31,7 @@ const Details = () => {
               uri: `https://image.tmdb.org/t/p/w500${chosenMovie[0].backdrop_path}`,
             }}
           />
-          <Text style={styles.movieTitle}>{chosenMovie[0].title}</Text>
+          <Text style={[styles.movieTitle, {color: theme.color}]}>{chosenMovie[0].title}</Text>
           <View style={styles.movieDetail_div}>
             <Text style={styles.movieOverview}>{chosenMovie[0].overview}</Text>
           </View>

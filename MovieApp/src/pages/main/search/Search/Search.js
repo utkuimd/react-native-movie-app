@@ -14,6 +14,7 @@ const Search = () => {
   const [filteredMovieList, setFilteredMovieList] = useState(movieList.movieList.results);
   const [anyMovie, setAnyMovie] = useState(true);
   const navigation = useNavigation();
+  const {theme} = useSelector(state => state.theme);
 
   const goToDetails = id => {
     navigation.navigate('DetailScreen', {id: id});
@@ -37,14 +38,14 @@ const Search = () => {
     return (
       <View style={styles.nullArea}>
         <View style={styles.nullList}>
-          <Text style={styles.nullList_text}>Couldn't find any Movie!</Text>
+          <Text style={[styles.nullList_text, {color: theme.color}]}>Couldn't find any Movie!</Text>
         </View>
       </View>
     );
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, {backgroundColor: theme.backgroundColor}]}>
       <Searchbar handleSearch={HandleSearch} />
       {anyMovie ? (
         <FlatList

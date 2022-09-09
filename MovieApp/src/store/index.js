@@ -38,12 +38,12 @@ const themeSlice = createSlice({
   reducers: {
     handleLightTheme: state => {
       return {
-        theme: state.theme === darkTheme ? lightTheme : darkTheme,
+        theme: state.theme === lightTheme ? darkTheme : lightTheme,
       };
     },
     handleDarkTheme: state => {
       return {
-        theme: state.theme === lightTheme ? darkTheme : lightTheme,
+        theme: state.theme === darkTheme ? lightTheme : darkTheme,
       };
     },
   },
