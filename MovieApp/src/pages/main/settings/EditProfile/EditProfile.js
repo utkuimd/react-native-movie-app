@@ -10,6 +10,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useDispatch} from 'react-redux';
 import {setUser} from '../../../../store';
+import {useNavigation} from '@react-navigation/native';
 import styles from './EditProfile.style';
 
 const EditProfile = () => {
@@ -19,6 +20,7 @@ const EditProfile = () => {
   const [username, setUsername] = useState('');
 
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   const saveChanges = async () => {
     if (password === passwordAgain) {
@@ -32,6 +34,11 @@ const EditProfile = () => {
       ];
       await AsyncStorage.setItem('user', JSON.stringify(newUser));
       dispatch(setUser(JSON.stringify(newUser)));
+      setEmail('');
+      setPassword('');
+      setPasswordAgain('');
+      setUsername('');
+      navigation.navigate('SettingsScreen');
     } else {
       Alert.alert('Please check your information!');
     }

@@ -81,7 +81,11 @@ const MainStack = () => {
         component={MainBottomTab}
         options={{headerShown: false}}
       />
-      <Stack.Screen name="DetailScreen" component={Details} />
+      <Stack.Screen
+        name="DetailScreen"
+        component={Details}
+        options={{headerTitle: 'Movie Details', headerTitleAlign: 'center'}}
+      />
     </Stack.Navigator>
   );
 };
@@ -170,7 +174,11 @@ const SettingsStack = () => {
         component={EditProfile}
         options={{headerTitle: 'Edit Profile', headerTitleAlign: 'center'}}
       />
-      <Stack.Screen name="ChangeThemeScreen" component={ChangeTheme} />
+      <Stack.Screen
+        name="ChangeThemeScreen"
+        component={ChangeTheme}
+        options={{headerTitle: 'Change Theme', headerTitleAlign: 'center'}}
+      />
     </Stack.Navigator>
   );
 };
