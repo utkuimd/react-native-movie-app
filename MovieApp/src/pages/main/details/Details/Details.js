@@ -9,8 +9,6 @@ const Details = () => {
   const route = useRoute();
   const chosenMovieID = route.params.id;
   const movieList = useSelector(state => state.movieList);
-  //console.log(movieList);
-  //console.log(movieList.movieList.results.filter(movie => movie.id === chosenMovieID));
   const chosenMovie = movieList.movieList.results.filter(
     movie => movie.id === chosenMovieID,
   );

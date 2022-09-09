@@ -20,8 +20,8 @@ const SignUp = () => {
 
   const handlePostUser = () => {
     if (password === passwordAgain) {
-      axios
-        .post('http://10.0.3.2:3000/users', {
+      // eslint-disable-next-line prettier/prettier
+      axios.post('http://10.0.3.2:3000/users', {
           email,
           password,
           passwordAgain,

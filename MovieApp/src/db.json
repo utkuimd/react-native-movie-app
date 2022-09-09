@@ -1,32 +1,4 @@
 {
   "users": [
-    {
-      "email": "deneme email",
-      "password": "deneme password",
-      "passwordAgain": "deneme password",
-      "username": "utkuimd",
-      "id": 1
-    },
-    {
-      "email": "deneme",
-      "password": "deneme",
-      "passwordAgain": "deneme",
-      "username": "deneme",
-      "id": 2
-    },
-    {
-      "email": "deneme1",
-      "password": "deneme1",
-      "passwordAgain": "deneme1",
-      "username": "deneme1",
-      "id": 3
-    },
-    {
-      "email": "deneme2",
-      "password": "deneme2",
-      "passwordAgain": "deneme2",
-      "username": "deneme2",
-      "id": 4
-    }
   ]
 }
