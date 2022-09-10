@@ -16,8 +16,8 @@
 + You can logout via logout button.<br>
 + If you press logout button, you user data will erase and you will direct to sign in screen.<br>
 
-***PRESENTATION GIF OF MY PROJECT*** :<br>
-
+***PRESENTATION VİDEO OF MY PROJECT*** :<br>
+https://www.youtube.com/watch?v=q2YGg975ra4
 
 ***REQUİRED*** :<br>
 :heavy_check_mark: This project was created by using React Native CLI.<br>
