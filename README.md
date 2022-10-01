@@ -16,7 +16,7 @@
 + If you press logout button, you user data will erase and you will direct to sign in screen.<br>
 
 ***PRESENTATION VİDEO OF MY PROJECT*** :<br>
-https://www.youtube.com/watch?v=q2YGg975ra4
+[![Movie App](https://i.ytimg.com/vi/q2YGg975ra4/hqdefault.jpg)](https://www.youtube.com/watch?v=q2YGg975ra4)
 
 ***REQUİRED*** :<br>
 :heavy_check_mark: This project was created by using React Native CLI.<br>
@@ -26,7 +26,9 @@ https://www.youtube.com/watch?v=q2YGg975ra4
 :heavy_check_mark: Components are reusable.<br>
 :heavy_check_mark: I didn't get any errors from ESLint.<br>
 
-***OTHER NOTES*** :<br>
+***USED TECHNOLOGİES AND HOW THEY CAN İNSTALL*** :<br>
++ I used "The Movie API" for this project.<br>
++ https://developers.themoviedb.org/3/getting-started/introduction
 + I used "react-navigation" packet in this project. You can install this packet, as follows steps in this guide.<br>
 + https://reactnavigation.org/docs/getting-started#installation<br>
 + I used "react-native-vector-icons" packet in this project. You can install this packet, as follows steps in this guide.<br>
@@ -37,6 +39,6 @@ https://www.youtube.com/watch?v=q2YGg975ra4
 + https://react-native-async-storage.github.io/async-storage/docs/install/<br>
 + I used "Axios" packet in this project. You can install this packet, as follows steps in this guide.<br>
 + https://axios-http.com/docs/intro<br>
-+ I used "Redux" packet in this project. You can install this packet, as follows steps in this guide.<br>
++ I used "Redux Toolkit" packet in this project. You can install this packet, as follows steps in this guide.<br>
 + https://redux-toolkit.js.org/introduction/getting-started#installation<br>
 
