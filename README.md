@@ -15,10 +15,10 @@
 + You can logout via logout button.<br>
 + If you press logout button, you user data will erase and you will direct to sign in screen.<br>
 
-***PRESENTATION VİDEO OF MY PROJECT*** :<br>
+***PRESENTATION VIDEO OF MY PROJECT*** :<br>
 [![Movie App](https://i.ytimg.com/vi/q2YGg975ra4/hqdefault.jpg)](https://www.youtube.com/watch?v=q2YGg975ra4)
 
-***REQUİRED*** :<br>
+***REQUIRED*** :<br>
 :heavy_check_mark: This project was created by using React Native CLI.<br>
 :heavy_check_mark: Pages are scrollable.<br>
 :heavy_check_mark: In this project, a lots of commit pushed to the repository.<br>
@@ -26,7 +26,7 @@
 :heavy_check_mark: Components are reusable.<br>
 :heavy_check_mark: I didn't get any errors from ESLint.<br>
 
-***USED TECHNOLOGİES AND HOW THEY CAN İNSTALL*** :<br>
+***USED TECHNOLOGIES AND HOW THEY CAN INSTALL*** :<br>
 + I used "The Movie API" for this project.<br>
 + https://developers.themoviedb.org/3/getting-started/introduction
 + I used "react-navigation" packet in this project. You can install this packet, as follows steps in this guide.<br>
